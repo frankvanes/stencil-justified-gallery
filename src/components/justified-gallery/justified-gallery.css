@@ -1,0 +1,57 @@
+justified-gallery {
+  --gutter: 1px; /* actual value is set by JS */
+  border: none;
+  margin: 0;
+  padding: 0;
+  margin-bottom: calc(-1*var(--gutter));
+  overflow: hidden;
+}
+justified-gallery::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+justified-gallery > * {
+  position: relative;
+  
+  float: left;
+  box-sizing: content-box;
+  
+  border-left: var(--gutter) solid white;
+  border-bottom: var(--gutter) solid white;
+  margin-left: calc(-1*var(--gutter));
+  overflow: hidden;
+  line-height: 0;
+}
+
+justified-gallery .label {
+  box-sizing: border-box;
+  font-family: sans-serif;
+  font-size: .8rem;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  padding: 10px;
+  opacity: 0;
+  transition: opacity .2s;
+  display: inline-block;
+  line-height: normal;
+  /* white-space: nowrap; */
+}
+justified-gallery>*:hover .label {
+  opacity: .6;
+  color: white;
+}
+
+justified-gallery img {
+  height: auto;
+  width: auto;
+  max-height: 100%;
+  max-width: 100%;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}

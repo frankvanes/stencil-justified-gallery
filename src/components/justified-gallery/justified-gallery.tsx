@@ -53,7 +53,7 @@ export class JustifiedGallery {
    * @param el An HTMLElement for which we want to determine the aspect ratio
    * @returns A promise that resolves to the requested aspect ratio, when known
    */
-  private determineAspectRatio(el: HTMLElement) {
+  private determineAspectRatio(el: HTMLElement): Promise<number> {
     const imgEl = el.querySelector('img');
     return new Promise((resolve) => {
       imgEl.naturalHeight && resolve(imgEl.naturalWidth / imgEl.naturalHeight);
@@ -86,7 +86,7 @@ export class JustifiedGallery {
     let waitForFullWidthRow = this.fullWidthCadence - 1;
 
     for (const item of items) {
-      const aspectRatio = await this.determineAspectRatio(item) as number;
+      const aspectRatio = await this.determineAspectRatio(item);
       
       row.aspectRatio += aspectRatio;
       row.items.push(item);
@@ -124,12 +124,12 @@ export class JustifiedGallery {
     if (!row || !row.items || !row.items.length) return;
 
     for (const item of row.items) {
+      const aspectRatio = await this.determineAspectRatio(item);
       item.style.clear = 'none';
       if (!justify) {
-        item.style.width = 'auto';
+        item.style.width = this.minRowHeight * aspectRatio + 'px';
         item.style.height = this.minRowHeight + 'px';
       } else {
-        const aspectRatio = await this.determineAspectRatio(item) as number;
         item.style.width = (aspectRatio / row.aspectRatio * 100) + '%';
         item.style.height = 'auto';
       }

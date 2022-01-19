@@ -1,6 +1,6 @@
 Stencil-Justified-Gallery is a StencilJS implementation of a Justified image gallery.
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/575c2cb0-eec9-4033-98b5-9bb4fafc248f/deploy-status)](https://app.netlify.com/sites/justified-gallery/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/575c2cb0-eec9-4033-98b5-9bb4fafc248f/deploy-status)](https://justified-gallery.netlify.app)
 
 <img width="813" alt="justified-gallery" src="https://user-images.githubusercontent.com/4946515/150219561-7bed7d36-5536-42f2-af40-6738480a0b2c.png">
 
